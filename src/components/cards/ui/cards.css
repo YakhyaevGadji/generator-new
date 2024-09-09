@@ -37,10 +37,6 @@
     opacity: 0;
 }
 
-.card.card__active {
-    pointer-events: none;
-}
-
 .card:hover {
     opacity: 0.5;
     transition: .2s linear;

@@ -14,12 +14,12 @@ const Cards: React.FC<IPropsCards> = ({ buttonData, cards, selectedCards }): Rea
     // Обработчик клика по карточке
     const onClickCard = (event: React.MouseEvent<HTMLDivElement>): void => {
         const cardElement = event.currentTarget.closest(".card") as HTMLDivElement;
-        if(!cardElement) return;
+        if (!cardElement) return;
 
         const id = Number(cardElement.dataset.id);
         const card = cards.find((card) => card.id === id);
 
-        if (card) {
+        if (selectedCards.findIndex((card) => card.id === id) < 0 && card) {
             dispatch(setSelectedCards({card, id}));
         }
     };
