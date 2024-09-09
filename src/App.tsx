@@ -7,14 +7,19 @@ import { useAppSelector } from "./hooks/redux.ts";
 const App: React.FC = (): React.JSX.Element => {
     const { buttonData, cards, selectedCards } = useAppSelector((state) => state.data);
 
-    console.log(selectedCards);
-
     return (
         <div className="main">
-            <Buttons/>
+            <Buttons selectedCards={selectedCards}/>
             <div className="render__block">
-                <Cards buttonData={buttonData} cards={cards} selectedCards={selectedCards}/>
-                <SelectedCards selectedCards={selectedCards} cards={cards}/>;
+                <Cards
+                    buttonData={buttonData}
+                    cards={cards}
+                    selectedCards={selectedCards}
+                />
+                <SelectedCards
+                    selectedCards={selectedCards}
+                    cards={cards}
+                />
             </div>
         </div>
     );

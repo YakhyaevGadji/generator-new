@@ -2,21 +2,23 @@ import React from "react";
 import { Card } from "../../../redux/redux.types.ts";
 import { useAppDispatch } from "../../../hooks/redux.ts";
 import { setSelectedCards } from "../../../redux/reduxSlice.ts";
+import { IPropsSelectedCards } from "../model/selected-cards.types.ts";
 import "./selected-cards.css";
 
-interface IProps {
-    selectedCards: Card[];
-    cards: Card[];
-}
-
-const SelectedCards: React.FC<IProps> = ({selectedCards, cards}): React.JSX.Element => {
+const SelectedCards: React.FC<IPropsSelectedCards> = ({selectedCards, cards}): React.JSX.Element => {
     const dispatch = useAppDispatch();
 
-    const onClickSelectedCard = (event: any) => {
-        const id = Number(event.target.closest('.selecteds__item').dataset.card);
+    // Обработчик клика по выбранным карточкам
+    const onClickSelectedCard = (event: React.MouseEvent<HTMLDivElement>): void => {
+        const target = event.target as HTMLDivElement;
+        const closestItem = target.closest('.selecteds__item') as HTMLDivElement;
+
+        const id = Number(closestItem.dataset.card);
         const card = cards.find((card) => card.id === id);
 
-        dispatch(setSelectedCards({card, id}));
+        if (card) {
+            dispatch(setSelectedCards({card, id}));
+        }
     };
 
     return (

@@ -1,7 +1,9 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {Card, Data, TypeButtonData} from "./redux.types.ts";
 
 const initialState: Data = {
+
+    // Массив карточек
     cards: [
         {id: 1, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2nAnjJlvd4VGFaoKIyredFj6o66AFuevc7A&s', title: 'kit one1', kit: 'one', status: false},
         {id: 2, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgMO_vLuojLTA7Jmm4XBQmSuF0ykBMXZVig&s', title: 'kit one2', kit: 'one', status: false},
@@ -17,49 +19,48 @@ const initialState: Data = {
         {id: 12, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoDQkRN3MeUWK4U-9j0hjr0bNGFUcgQN5vhg&s', title: 'kit one6', kit: 'two', status: false},
     ],
 
+    // Массив выбранных карточек
     selectedCards: [],
 
+    //Объект с данными кнопок
     buttonData: {
         kit: '',
         count: 0
     }
-}
+};
 
 export const counterSlice = createSlice({
     name: 'data',
     initialState,
     reducers: {
-        setButtonData(state, action: PayloadAction<TypeButtonData>) {
+        setButtonData: (state, action: PayloadAction<TypeButtonData>) => {
             state.buttonData = action.payload;
         },
-        setSelectedCards(state, action) {
-            const test = state.selectedCards.findIndex((item) => item.id === action.payload.id);
+        setSelectedCards: (state, action: PayloadAction<{card: Card, id: number}>) => {
+            const { id, card } = action.payload;
+            const cardIndex = state.selectedCards.findIndex((item) => item.id === id);
 
-            if(test > -1) {
-                state.selectedCards.splice(test, 1);
-                state.cards = state.cards.map((item) => item.id === action.payload.id ? { ...item, status: !item.status } : {...item});
-            }else {
-                state.selectedCards.push(action.payload.card);
-                state.cards = state.cards.map((item) => item.id === action.payload.id ? { ...item, status: !item.status } : {...item});
+            if (cardIndex > -1) {
+                state.selectedCards.splice(cardIndex, 1);
+            } else {
+                state.selectedCards.push(card);
             }
+
+            state.cards = state.cards.map((item) =>
+                item.id === id ? { ...item, status: !item.status } : item
+            )
         },
-        resetSelectedCards(state) {
+        resetSelectedCards: (state) => {
             state.selectedCards = [];
+            state.cards = state.cards.map((item) => {return {...item, status: false}});
         },
-        removeSelectedCard(state, action) {
-            state.selectedCards = state.selectedCards.filter((card: Card) => card.id !== action.payload);
-        },
-        toggleStatusCard(state, action) {
-            state.cards = state.cards.filter((card: Card) => card.id !== action.payload);
-        }
     },
-})
+});
 
 export const {
     setButtonData,
     setSelectedCards,
     resetSelectedCards,
-    removeSelectedCard
 } = counterSlice.actions
 
 export default counterSlice.reducer
