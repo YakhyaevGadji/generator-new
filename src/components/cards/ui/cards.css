@@ -33,7 +33,7 @@
     transform: translate(-50%, -50%);
     width: 70px;
     height: 70px;
-    background: url("../../../../public/icon-plus.png") no-repeat;
+    background: url("/public/icon-plus.png") no-repeat;
     opacity: 0;
 }
 
