@@ -26,7 +26,7 @@ const initialState: Data = {
 
     buttons: [
         {id: 1, kit: 'one', title: 'Набор 1', count: 4},
-        {id: 2, kit: 'one', title: 'Набор 1', count: 5},
+        {id: 2, kit: 'two', title: 'Набор 1', count: 5},
     ],
 
     // Массив выбранных карточек
