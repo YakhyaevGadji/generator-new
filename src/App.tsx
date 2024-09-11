@@ -5,11 +5,11 @@ import SelectedCards from "./components/selected-cards/ui";
 import { useAppSelector } from "./hooks/redux.ts";
 
 const App: React.FC = (): React.JSX.Element => {
-    const { buttonData, cards, selectedCards } = useAppSelector((state) => state.data);
+    const { buttonData, cards, selectedCards, buttons } = useAppSelector((state) => state.data);
 
     return (
         <div className="main">
-            <Buttons selectedCards={selectedCards}/>
+            <Buttons selectedCards={selectedCards} buttons={buttons}/>
             <div className="render__block">
                 <Cards
                     buttonData={buttonData}

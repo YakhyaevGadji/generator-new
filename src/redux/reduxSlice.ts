@@ -5,7 +5,12 @@ const initialState: Data = {
 
     // Массив карточек
     cards: [
-        {id: 1, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2nAnjJlvd4VGFaoKIyredFj6o66AFuevc7A&s', title: 'kit one1', kit: 'one', status: false},
+        {id: 1,
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2nAnjJlvd4VGFaoKIyredFj6o66AFuevc7A&s',
+            title: 'kit one1',
+            kit: 'one',
+            status: false
+        },
         {id: 2, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgMO_vLuojLTA7Jmm4XBQmSuF0ykBMXZVig&s', title: 'kit one2', kit: 'one', status: false},
         {id: 3, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH0lutGHI_snEF6hOUkp83oXDBuGPhHST9YQ&s', title: 'kit one3', kit: 'one', status: false},
         {id: 4, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimeX2iQJcWi0ZIJ38Lb0SCZ1Yte71DEJWyw&s', title: 'kit one4', kit: 'one', status: false},
@@ -19,6 +24,11 @@ const initialState: Data = {
         {id: 12, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoDQkRN3MeUWK4U-9j0hjr0bNGFUcgQN5vhg&s', title: 'kit one6', kit: 'two', status: false},
     ],
 
+    buttons: [
+        {id: 1, kit: 'one', title: 'Набор 1', count: 4},
+        {id: 2, kit: 'one', title: 'Набор 1', count: 5},
+    ],
+
     // Массив выбранных карточек
     selectedCards: [],
 
@@ -26,7 +36,8 @@ const initialState: Data = {
     buttonData: {
         kit: '',
         count: 0
-    }
+    },
+
 };
 
 export const counterSlice = createSlice({

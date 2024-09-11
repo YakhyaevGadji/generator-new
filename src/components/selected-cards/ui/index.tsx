@@ -9,11 +9,7 @@ const SelectedCards: React.FC<IPropsSelectedCards> = ({selectedCards, cards}): R
     const dispatch = useAppDispatch();
 
     // Обработчик клика по выбранным карточкам
-    const onClickSelectedCard = (event: React.MouseEvent<HTMLDivElement>): void => {
-        const target = event.target as HTMLDivElement;
-        const closestItem = target.closest('.selecteds__item') as HTMLDivElement;
-
-        const id = Number(closestItem.dataset.card);
+    const onClickSelectedCard = (id: number): void => {
         const card = cards.find((card) => card.id === id);
 
         if (card) {
@@ -25,7 +21,7 @@ const SelectedCards: React.FC<IPropsSelectedCards> = ({selectedCards, cards}): R
         <div className="selecteds">
             {selectedCards.map((card: Card) => {
                 return (
-                    <div onClick={onClickSelectedCard} key={card.id} className="selecteds__item" data-card={card.id}>
+                    <div onClick={() => onClickSelectedCard(card.id)} key={card.id} className="selecteds__item">
                         <img className="card__img" src={card.img} alt={card.title}/>
                     </div>
                 );

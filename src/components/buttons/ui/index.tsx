@@ -4,19 +4,16 @@ import { useDispatch } from "react-redux";
 import { IPropsButtons } from "../model/buttons.types.ts";
 import './buttons.css';
 
-const Buttons: React.FC<IPropsButtons> = ({selectedCards}): React.JSX.Element => {
+const Buttons: React.FC<IPropsButtons> = ({selectedCards, buttons}): React.JSX.Element => {
     const dispatch = useDispatch();
-    const [toggleActive, setToggleActive] = React.useState<string>('');
+    const [toggleActive, setToggleActive] = React.useState<number>(0);
 
     // Обработчик клика по кнопкам
-    const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>, btn: string): void => {
-        const target = event.target as HTMLButtonElement;
-        const kit = target.id;
-        const count = Number(target.dataset.kit);
+    const handleButtonClick = (kit: string, count: number, id: number): void => {
+        setToggleActive(id);
 
         dispatch(setButtonData({kit, count}));
         dispatch(resetSelectedCards());
-        setToggleActive(btn);
     };
 
     return (
@@ -25,18 +22,17 @@ const Buttons: React.FC<IPropsButtons> = ({selectedCards}): React.JSX.Element =>
 
             <div className="buttons">
                 <div className="buttons__flex">
-                    <button
-                        onClick={(event) => handleButtonClick(event, 'button1')}
-                        className={`buttons__button ${toggleActive === 'button1' ? 'button__active' : ''}`}
-                        id="one"
-                        data-kit="4"
-                    >Набор 1</button>
-                    <button
-                        onClick={(event) => handleButtonClick(event, 'button2')}
-                        className={`buttons__button ${toggleActive === 'button2' ? 'button__active' : ''}`}
-                        id="two"
-                        data-kit="5"
-                    >Набор 2</button>
+                    {buttons.map((btn) => {
+                        return (
+                            <button
+                                onClick={() => handleButtonClick(btn.kit, btn.count, btn.id)}
+                                key={btn.id}
+                                className={`buttons__button ${btn.id === toggleActive ? 'button__active' : ''}`}
+                            >
+                                {btn.title}
+                            </button>
+                        );
+                    })}
                 </div>
                 <button
                     className={`buttons__generate ${selectedCards.length >= 2 ? 'buttons__generate__active' : ''}`}
