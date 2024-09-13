@@ -12,7 +12,7 @@ const App: FC = () => {
 
     const filterCards = useMemo(() => {
         return cards.filter(card => buttonData.kit === card.kit).splice(0, buttonData.count);
-    }, [cards, buttonData]);
+    }, [ buttonData.count, buttonData.kit, cards ]);
 
     return (
         <div className="main">
