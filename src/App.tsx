@@ -16,7 +16,7 @@ const App: FC = () => {
 
     return (
         <div className="main">
-            <ButtonBlock />
+            <ButtonBlock/>
             <div className="render__block">
                 <CardList cards={filterCards} selectedCards={selectedCards} />
                 <SelectedList selectedCards={selectedCards} />
