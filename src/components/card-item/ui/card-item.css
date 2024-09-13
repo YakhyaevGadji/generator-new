@@ -26,24 +26,20 @@
 }
 
 .card::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 53%;
     top: 55%;
     transform: translate(-50%, -50%);
     width: 70px;
     height: 70px;
-    background: url("/public/icon-plus.png") no-repeat;
+    background: url('/public/icon-plus.png') no-repeat;
     opacity: 0;
-}
-
-.card.card__active {
-    pointer-events: none;
 }
 
 .card:hover {
     opacity: 0.5;
-    transition: .2s linear;
+    transition: 0.2s linear;
 }
 
 .card__active {
@@ -52,5 +48,36 @@
 
 .card:hover::before {
     opacity: 1;
-    transition: .2s linear;
+    transition: 0.2s linear;
+}
+
+.selecteds {
+    background-color: #8e8e8e;
+    display: flex;
+}
+
+.selecteds__item {
+    position: relative;
+    padding: 15px;
+}
+
+.selecteds__item::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 70px;
+    height: 70px;
+    background: url('/icon-minuse.png') no-repeat;
+    opacity: 0;
+}
+
+.selecteds__item:hover::before {
+    opacity: 1;
+    transition: 0.2s linear;
+}
+
+.card__img {
+    width: 200px;
+    height: 200px;
 }

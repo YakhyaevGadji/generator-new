@@ -1,25 +1,10 @@
 .main {
-  max-width: 1440px;
-  min-height: 600px;
-  background-color: #2F2F2F;
-  display: flex;
+    max-width: 1440px;
+    min-height: 600px;
+    background-color: #2f2f2f;
+    display: flex;
 }
 
 .render__block {
-  width: 100%;
+    width: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,25 +1,25 @@
-import React from "react";
-import Buttons from "./components/buttons/ui";
-import Cards from "./components/cards/ui";
-import SelectedCards from "./components/selected-cards/ui";
-import { useAppSelector } from "./hooks/redux.ts";
+import { FC, useMemo } from 'react';
+import ButtonBlock from './components/button-block/ui';
+import CardList from './components/card-list/ui';
+import { useAppSelector } from './shared/hooks/redux.ts';
+import { getButtonData, getCards, getSelectedCards } from './redux/selectors.ts';
+import SelectedList from './components/selected-list/ui';
 
-const App: React.FC = (): React.JSX.Element => {
-    const { buttonData, cards, selectedCards } = useAppSelector((state) => state.data);
+const App: FC = () => {
+    const cards = useAppSelector(getCards);
+    const buttonData = useAppSelector(getButtonData);
+    const selectedCards = useAppSelector(getSelectedCards);
+
+    const filterCards = useMemo(() => {
+        return cards.filter(card => buttonData.kit === card.kit).splice(0, buttonData.count);
+    }, [cards, buttonData]);
 
     return (
         <div className="main">
-            <Buttons selectedCards={selectedCards}/>
+            <ButtonBlock />
             <div className="render__block">
-                <Cards
-                    buttonData={buttonData}
-                    cards={cards}
-                    selectedCards={selectedCards}
-                />
-                <SelectedCards
-                    selectedCards={selectedCards}
-                    cards={cards}
-                />
+                <CardList cards={filterCards} selectedCards={selectedCards} />
+                <SelectedList selectedCards={selectedCards} />
             </div>
         </div>
     );

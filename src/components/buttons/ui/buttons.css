@@ -1,61 +1,31 @@
-.title {
-  color: #4BCD1B;
-  margin-bottom: 60px;
-}
-
 .buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .buttons__flex {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.buttons__generate {
-  background-color: #154A02;
-  color: #F0FBEC;
-  padding: 10px 30px;
-  border: none;
-  border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .buttons__button {
-  background-color: #8E8E8E;
-  color: #F0FBEC;
-  padding: 10px 40px;
-  border-radius: 8px;
-  transition: .2s linear;
-  border: 2px solid #8E8E8E;
-  cursor: pointer;
+    background-color: #8e8e8e;
+    color: #f0fbec;
+    padding: 10px 40px;
+    border-radius: 8px;
+    transition: 0.2s linear;
+    border: 2px solid #8e8e8e;
+    cursor: pointer;
 }
 
 .buttons__button:hover {
-  background-color: #565555;
-}
-
-.buttons__block {
-  padding: 20px;
-  background-color: #565555;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
-  -webkit-box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.05) inset;
-  -moz-box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.05) inset;
-  box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.05) inset;
-  width: 200px;
+    background-color: #565555;
 }
 
 .buttons__button.button__active {
-  background-color: inherit;
-  border: 2px solid #3F991D;
-}
-
-.buttons__generate.buttons__generate__active {
-  background-color: #2e7f11;
-  cursor: pointer;
+    background-color: inherit;
+    border: 2px solid #3f991d;
 }
