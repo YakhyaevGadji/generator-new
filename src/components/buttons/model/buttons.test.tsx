@@ -2,7 +2,7 @@ import Buttons from '../ui';
 import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import { setButtonData } from "../../../redux/slices/reduxSlice.ts";
-import {getButtonsType} from "../../../redux/selectors.ts";
+import {getButtonsType, getSelectedCards} from "../../../redux/selectors.ts";
 import configureMockStore from 'redux-mock-store';
 
 const mockStore = configureMockStore([]);
@@ -39,12 +39,15 @@ describe('Buttons', () => {
     });
 
     test('selectors redux', () => {
-        const result = getButtonsType(store.getState() as any);
+        const buttons = getButtonsType(store.getState() as any);
+        const selectedCards = getSelectedCards(store.getState() as any);
 
-        expect(result).toEqual([
+        expect(buttons).toEqual([
             { id: 1, kit: 'one', title: 'Набор 1', count: 4 },
             { id: 2, kit: 'two', title: 'Набор 2', count: 5 },
         ]);
+
+        expect(selectedCards).toEqual([]);
     });
 
     test('button click', () => {
