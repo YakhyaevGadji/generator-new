@@ -1,12 +1,24 @@
-import { getButtonData, getButtonsType, getCards, getSelectedCards } from "./selectors.ts";
-import { Data } from "./slices/redux.types.ts";
+import { getButtonData, getButtonsType, getCards, getSelectedCards } from './selectors.ts';
+import { Data } from './slices/redux.types.ts';
 
 describe('selects', () => {
     const mockState = {
         data: {
             cards: [
-                { id: 1, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2nAnjJlvd4VGFaoKIyredFj6o66AFuevc7A&s', title: 'kit one1', kit: 'one', status: false },
-                { id: 2, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgMO_vLuojLTA7Jmm4XBQmSuF0ykBMXZVig&s', title: 'kit one2', kit: 'one', status: false },
+                {
+                    id: 1,
+                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2nAnjJlvd4VGFaoKIyredFj6o66AFuevc7A&s',
+                    title: 'kit one1',
+                    kit: 'one',
+                    status: false,
+                },
+                {
+                    id: 2,
+                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgMO_vLuojLTA7Jmm4XBQmSuF0ykBMXZVig&s',
+                    title: 'kit one2',
+                    kit: 'one',
+                    status: false,
+                },
             ],
 
             buttons: [
@@ -20,11 +32,11 @@ describe('selects', () => {
                 kit: '',
                 count: 0,
             },
-        } as Data
-    }
+        } as Data,
+    };
 
     it('getButtonData', () => {
-        expect(getButtonData(mockState)).toEqual({kit: '', count: 0});
+        expect(getButtonData(mockState)).toEqual({ kit: '', count: 0 });
     });
 
     it('getCards', () => {
@@ -34,14 +46,14 @@ describe('selects', () => {
                 img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2nAnjJlvd4VGFaoKIyredFj6o66AFuevc7A&s',
                 title: 'kit one1',
                 kit: 'one',
-                status: false
+                status: false,
             },
             {
                 id: 2,
                 img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlgMO_vLuojLTA7Jmm4XBQmSuF0ykBMXZVig&s',
                 title: 'kit one2',
                 kit: 'one',
-                status: false
+                status: false,
             },
         ]);
     });

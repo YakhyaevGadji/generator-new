@@ -26,4 +26,3 @@ export interface Data {
     buttonData: TypeButtonData;
     buttons: TypeButton[];
 }
-
