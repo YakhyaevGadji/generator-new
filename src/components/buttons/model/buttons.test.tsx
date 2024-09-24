@@ -136,7 +136,9 @@ describe('Buttons', () => {
         fireEvent.click(btn1);
 
         // Сработали функции или нет
-        expect(mockStoreInstance.dispatch).toHaveBeenCalledWith(setButtonData({ kit: 'one', count: 4 }));
+        expect(mockStoreInstance.dispatch).toHaveBeenCalledWith(
+            setButtonData({ kit: 'one', count: 4 })
+        );
         expect(mockStoreInstance.dispatch).toHaveBeenCalledWith(resetSelectedCards());
 
         // Проверяет меняется класс или нет
