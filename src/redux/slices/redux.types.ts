@@ -26,3 +26,7 @@ export interface Data {
     buttonData: TypeButtonData;
     buttons: TypeButton[];
 }
+
+
+//abidat291@gmail.com
+//Abidat291291!@
