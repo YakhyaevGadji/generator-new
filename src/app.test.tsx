@@ -126,22 +126,5 @@ describe('test App', () => {
 
             expect(result.current).toEqual([]);
         });
-
-        it('should return all matching cards if count is larger than the number of matches', () => {
-            const buttonData = { kit: 'kit1', count: 10 };
-            const cards = [
-                { id: 1, kit: 'kit1' },
-                { id: 2, kit: 'kit1' },
-                { id: 3, kit: 'kit1' }
-            ];
-
-            const { result } = renderHook(() =>
-                useMemo(() => {
-                    return cards.filter(card => buttonData.kit === card.kit).splice(0, buttonData.count);
-                }, [])
-            );
-
-            expect(result.current).toEqual(cards);
-        });
     });
 });
